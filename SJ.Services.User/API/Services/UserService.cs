@@ -11,7 +11,7 @@ namespace API.Services
         public async Task<GetUserDto> AddUser(AddUserDto dto)
         {
             var userAlreadyExist = await context.Users
-                .SingleOrDefaultAsync(x => x.Email.ToLower() == dto.Email.ToLower());
+                .SingleOrDefaultAsync(x => x.Email.ToLower() == dto.Email.ToLower() && dto.Company.ToLower() == x.Company.ToLower());
 
             if (userAlreadyExist != null)
             {
